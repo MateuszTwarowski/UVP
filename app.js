@@ -1,4 +1,44 @@
 /* ________________________________________________________________________________________ */
+/* _________________________________________GLOBAL_________________________________________ */
+/* ________________________________________________________________________________________ */
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+  },
+);
+
+document.querySelectorAll(".reveal").forEach((el) => {
+  revealObserver.observe(el);
+});
+
+const revealRightObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.2,
+  },
+);
+
+document.querySelectorAll(".reveal-right").forEach((el) => {
+  revealRightObserver.observe(el);
+});
+
+/* ________________________________________________________________________________________ */
 /* _________________________________________NAVBAR_________________________________________ */
 /* ________________________________________________________________________________________ */
 
@@ -13,8 +53,18 @@ window.addEventListener("scroll", () => {
 });
 
 /* ________________________________________________________________________________________ */
-/* _________________________________________COUNTERS_______________________________________ */
+/* ___________________________________________STATS________________________________________ */
 /* ________________________________________________________________________________________ */
+
+const statsTile = document.querySelector(".stats-tile");
+
+function centerStats() {
+  if (!statsTile) return;
+  statsTile.scrollLeft = (statsTile.scrollWidth - statsTile.clientWidth) / 2;
+}
+
+window.addEventListener("load", centerStats);
+window.addEventListener("resize", centerStats);
 
 const counters = document.querySelectorAll(".counter");
 
@@ -28,7 +78,7 @@ const observer = new IntersectionObserver(
 
       let current = 0;
 
-      const increment = target / 250;
+      const increment = target / 300;
 
       function update() {
         current += increment;
