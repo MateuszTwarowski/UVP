@@ -38,6 +38,24 @@ document.querySelectorAll(".reveal-right").forEach((el) => {
   revealRightObserver.observe(el);
 });
 
+const revealLeftObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.2,
+  },
+);
+
+document.querySelectorAll(".reveal-left").forEach((el) => {
+  revealLeftObserver.observe(el);
+});
+
 /* ________________________________________________________________________________________ */
 /* _________________________________________NAVBAR_________________________________________ */
 /* ________________________________________________________________________________________ */

@@ -48,6 +48,7 @@ p {
   font-size: clamp(0.5rem, 2.5vw, 2rem);
   font-weight: 500;
   text-justify: auto;
+  text-align: justify;
 }
 
 .panel {
@@ -56,6 +57,22 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.panel-title {
+  font-size: clamp(0.5rem, 2vw, 1.5rem);
+  color: var(--cayenne);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  width: fit-content;
+  border-bottom: solid 0.2rem var(--orange);
+}
+
+.panel-sub-title {
+  color: var(--black);
+  font-size: clamp(1rem, 4vw, 4rem);
+  letter-spacing: clamp(-0.01rem, -1vw, -0.3rem);
+  width: fit-content;
 }
 
 .btn,
@@ -99,17 +116,63 @@ textarea {
   color: #fff;
 }
 
+.baner-content-conainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 2rem);
+  width: 40%;
+  width: clamp(300px, 40%, 700px);
+}
+
+.baner-header {
+  color: var(--mocha);
+  font-size: clamp(1rem, 4vw, 4rem);
+  font-weight: 1000;
+}
+
+.baner-subheader {
+  color: var(--cayenne);
+  font-family: "Just Another Hand";
+  font-size: clamp(2rem, 6vw, 6rem);
+  font-weight: 100;
+}
+
+.baner-text {
+  font-family: "Montserrat", sans-serif;
+  color: var(--mocha);
+  font-size: clamp(0.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+}
+
+.baner-highlights {
+  margin-top: 2rem;
+  display: column;
+  gap: 2rem;
+}
+
+.baner-highlight {
+  display: flex;
+  gap: 1rem;
+}
+
+.baner-icon {
+  width: clamp(30px, 4vw, 60px);
+  height: clamp(30px, 4vw, 60px);
+}
+
+.baner-small-text {
+  align-self: center;
+  color: var(--mocha);
+  font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+  font-weight: 500;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(60px);
   transition:
     opacity 1.5s ease,
     transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-right {
@@ -121,7 +184,16 @@ textarea {
   will-change: transform, opacity;
 }
 
-.reveal-right.show {
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition:
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.5s ease;
+  will-change: transform, opacity;
+}
+
+.show {
   opacity: 1;
   transform: translateX(0);
 }
@@ -217,55 +289,6 @@ textarea {
   /* border-bottom: solid 0.5rem var(--orange); */
 }
 
-.baner-content-conainer {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.5rem, 1vw, 2rem);
-  width: 40%;
-}
-
-.baner-header {
-  color: var(--mocha);
-  font-size: clamp(1rem, 4vw, 4rem);
-  font-weight: 1000;
-}
-
-.baner-subheader {
-  color: var(--orange);
-  font-family: "Just Another Hand";
-  font-size: clamp(2rem, 6vw, 6rem);
-}
-
-.baner-text {
-  font-family: "Montserrat", sans-serif;
-  color: var(--mocha);
-  font-size: clamp(0.5rem, 2.5vw, 2rem);
-  font-weight: 500;
-}
-
-.baner-highlights {
-  margin-top: 2rem;
-  display: column;
-  gap: 2rem;
-}
-
-.baner-highlight {
-  display: flex;
-  gap: 1rem;
-}
-
-.baner-icon {
-  width: clamp(30px, 4vw, 60px);
-  height: clamp(30px, 4vw, 60px);
-}
-
-.baner-small-text {
-  align-self: center;
-  color: var(--mocha);
-  font-size: clamp(0.5rem, 1.5vw, 1.5rem);
-  font-weight: 500;
-}
-
 .about-us-content {
   background: #faf7ed;
   background: linear-gradient(
@@ -275,8 +298,8 @@ textarea {
     rgba(189, 181, 181, 1) 100%
   );
   background-size: cover;
-  padding-left: clamp(0.5rem, 5vw, 8rem);
-  padding-right: clamp(0.5rem, 5vw, 8rem);
+  padding-left: clamp(1rem, 3vw, 5rem);
+  padding-right: clamp(1rem, 3vw, 5rem);
   padding-top: clamp(2rem, 5vw, 4rem);
   padding-bottom: clamp(2rem, 5vw, 4rem);
   /* border-bottom: 0.5rem solid var(--orange); */
@@ -286,30 +309,50 @@ textarea {
 
 .coffee-leaf {
   position: absolute;
-  left: -3%;
+  left: -9%;
   top: 43%;
-  width: clamp(220px, 30vw, 700px);
+  width: clamp(220px, 40vw, 600px);
   pointer-events: none;
   opacity: 0.15;
   z-index: 0;
 }
 
-.about-us-text {
-  display: flex;
-  gap: 1rem;
+.about-us-title {
+  font-size: clamp(0.5rem, 2vw, 1.5rem);
+  color: var(--cayenne);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  width: fit-content;
+  border-bottom: solid 0.2rem var(--orange);
 }
 
-.about-us-header {
-  align-content: center;
-  border-right: solid clamp(0.3rem, 1vw, 1rem) var(--cayenne);
-  padding-right: clamp(1rem, 3vw, 2rem);
+.about-us-uvp {
+  color: var(--black);
+  font-size: clamp(1rem, 4vw, 4rem);
+  letter-spacing: clamp(-0.01rem, -1vw, -0.3rem);
+  padding-bottom: 0.5rem;
+  width: fit-content;
+}
+
+.about-us-details {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.about-us-info {
+  align-self: center;
+
+  p ~ p {
+    margin-top: 2rem;
+  }
 }
 
 .about-us-stats {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 2rem;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .stat {
@@ -321,8 +364,7 @@ textarea {
 
 .stat-icon {
   align-self: center;
-  min-width: 30px;
-  width: clamp(30px, 4vw, 60px);
+  min-width: clamp(30px, 4vw, 60px);
   height: clamp(30px, 4vw, 60px);
 }
 
@@ -338,37 +380,62 @@ textarea {
   font-size: clamp(0.3rem, 2.5vw, 1.2rem);
 }
 
-.about-us-big-text {
-  color: var(--mocha);
-  font-size: clamp(1rem, 4vw, 4rem);
-  letter-spacing: clamp(-0.01rem, -1vw, -0.3rem);
-}
-
-.about-us-big-text h2 {
-  font-weight: 600;
-}
-
-.about-us-big-text .highlight {
-  margin-top: clamp(-2.2rem, -4vw, -1rem);
-  color: var(--orange);
-}
-
-.about-us-small-text {
+.why-us-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.why-us-content {
   background-image: url("assets/baner-2.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 90%;
   padding-left: clamp(1rem, 3vw, 5rem);
-  padding-top: calc(6rem + clamp(8rem, 25vw, 20rem));
-  padding-bottom: clamp(8rem, 25vw, 20rem);
+  padding-right: clamp(1rem, 3vw, 5rem);
+  padding-top: clamp(1rem, 10vw, 10rem);
+  padding-bottom: clamp(1rem, 10vw, 10rem);
   border-bottom: solid 0.5rem var(--orange);
+}
+
+.why-us-title {
+  max-width: 50%;
+
+  .panel-sub-title ~ .panel-sub-title {
+    margin-top: clamp(-2rem, -2vw, -0.5rem);
+  }
+
+  .baner-small-text {
+    font-size: clamp(0.7rem, 1.5vw, 1.7rem);
+    margin-top: clamp(0.5rem, 1vw, 1rem);
+  }
+}
+
+.why-us-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 5vw, 8rem);
+  margin-top: 2rem;
+}
+
+.why-us-highlight {
+  display: flex;
+  gap: 1rem;
+  min-width: clamp(250px, 50vw, 800px);
+  max-width: clamp(250px, 50vw, 800px);
+  background: var(--surface);
+  padding: clamp(1rem, 2vw, 2rem);
+  border-radius: clamp(1rem, 2vw, 2.5rem);
+  align-items: center;
+  box-shadow: 0 0 10px var(--grey-1);
+
+  img {
+    max-height: clamp(25px, 5vw, 120px);
+  }
+
+  .panel-title {
+    padding-bottom: clamp(0.5rem, 2vw, 1rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+  }
+}
+
+.why-us-text {
 }
 
 /* ________________________________________________________________________________________ */
@@ -441,11 +508,19 @@ iframe {
     gap: 1rem;
   }
 
-  @media (min-width: 768px) {
-    .stats {
-      flex-direction: row;
-      justify-content: space-between;
-    }
+  .stats {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .why-us-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .why-us-title {
+    align-self: center;
+    max-width: 25%;
   }
 }
 
@@ -462,5 +537,32 @@ iframe {
   .stats {
     padding-left: 6vw;
     padding-right: 6vw;
+  }
+
+  .coffee-leaf {
+    left: -9%;
+    top: 20%;
+  }
+}
+
+@media (min-width: 2000px) {
+  .coffee-leaf {
+    left: -7%;
+  }
+
+  .why-us-content {
+    justify-content: start;
+    gap: 10vw;
+  }
+
+  .why-us-highlights {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 2400px) {
+  .coffee-leaf {
+    left: -4%;
   }
 }
