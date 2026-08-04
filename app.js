@@ -152,9 +152,13 @@ class Slider {
   init() {
     this.show(0);
 
-    this.prev.addEventListener("click", () => this.previous());
+    if (this.prev) {
+      this.prev.addEventListener("click", () => this.previous());
+    }
 
-    this.next.addEventListener("click", () => this.nextSlide());
+    if (this.next) {
+      this.next.addEventListener("click", () => this.nextSlide());
+    }
 
     this.dots.forEach((dot, index) => {
       dot.addEventListener("click", () => {
@@ -163,31 +167,38 @@ class Slider {
     });
 
     this.startAutoplay();
-
     this.slider.addEventListener("mouseenter", () => this.stopAutoplay());
-
     this.slider.addEventListener("mouseleave", () => this.startAutoplay());
 
     this.addTouchEvents();
-
     this.addMouseEvents();
   }
 
   show(index) {
+    if (!this.images.length) return;
+
+    const safeIndex = Math.max(0, Math.min(index, this.images.length - 1));
+
     this.images.forEach((img) => img.classList.remove("active"));
+
+    const image = this.images[safeIndex];
+    if (image) image.classList.add("active");
+
     this.dots.forEach((dot) => dot.classList.remove("active"));
 
-    this.images[index].classList.add("active");
-    this.dots[index].classList.add("active");
+    const dot = this.dots[safeIndex];
+    if (dot) dot.classList.add("active");
 
-    this.current = index;
+    this.current = safeIndex;
   }
 
   nextSlide() {
+    if (this.images.length <= 1) return;
     this.show((this.current + 1) % this.images.length);
   }
 
   previous() {
+    if (this.images.length <= 1) return;
     this.show((this.current - 1 + this.images.length) % this.images.length);
   }
 
