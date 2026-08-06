@@ -651,6 +651,8 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: clamp(-5rem, -3vw, -1rem);
+  padding-left: clamp(1rem, 3vw, 5rem);
 
   p {
     color: #666;
